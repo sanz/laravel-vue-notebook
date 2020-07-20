@@ -1,0 +1,44 @@
+.hidden {
+    display: none;
+}
+
+.sticky-top {
+    top: 1em;
+}
+
+.notebook:hover .text ul.hidden {
+    display: block;
+}
+
+span.text {
+    display: block;
+    cursor: pointer;
+}
+
+span.text i {
+    cursor: pointer;
+}
+
+span.edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+span.edit input {
+    border: none;
+    background: transparent;
+    color:white;
+}
+
+span.edit input:focus {
+    border: none;
+}
+
+span.edit .actions i {
+    cursor: pointer;
+}
+
+.title span.edit input {
+    color: black;
+}
