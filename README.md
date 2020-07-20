@@ -11,5 +11,10 @@
 
 ### Steps for Installation
 ```
-
+git clone https://github.com/SanishGrg/Laravel-Notebook.git laravel-notebook
+cd laravel-notebook
+composer install
+cp .env.example .env
+php artisan migrate --seed
+php artisan serve
 ```
