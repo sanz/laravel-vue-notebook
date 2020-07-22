@@ -16,5 +16,6 @@ cd laravel-notebook
 composer install
 cp .env.example .env
 php artisan migrate --seed
+php artisan key:generate
 php artisan serve
 ```
