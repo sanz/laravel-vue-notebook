@@ -7,7 +7,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Laravel Notebook
+# Laravel Notebook
+Notebook is a interactive note taking application created to organize your notes on the web. I made this with Laravel 7 and Vue js.
+
+## What are the functionalities of Notebook 
+- Users can register themselves an account and starting taking notes.
+- BASIC CRUD for ```Notebooks``` and ```Notes``` with Vue JS.
+- A inline WYSIWIG Editor to edit your notes content seamlessly.
 
 ### Steps for Installation
 ```
