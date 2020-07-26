@@ -25,3 +25,5 @@ php artisan migrate --seed
 php artisan key:generate
 php artisan serve
 ```
+
+- If you find the repository helpful, hit that star :)
