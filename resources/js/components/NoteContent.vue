@@ -61,7 +61,7 @@
 
 <script>
 
-require('../ckeditor5/build/ckeditor');
+require("../ckeditor5-build-inline/build/ckeditor");
 
 export default {
     props: ["note"],
@@ -73,13 +73,13 @@ export default {
             newTitle: '',
             editorOptions: {
                 placeholder: 'Start Writing Content...',
-                toolbar: [
-                    'heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList', 
-                    '|', 'blockQuote', 'imageUpload', 'insertTable', 'mediaEmbed'
-                ],
-                table: {
-                    contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
-                },
+                // toolbar: [
+                //     'heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList', 
+                //     '|', 'blockQuote', 'imageUpload', 'insertTable', 'mediaEmbed'
+                // ],
+                // table: {
+                //     contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+                // },
                 image: {
                     toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
                     styles: ['full', 'alignLeft', 'alignRight']
