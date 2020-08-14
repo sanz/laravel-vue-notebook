@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\NoteBook;
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Validator;
-
 class NoteBookController extends Controller
 {
     /**
@@ -83,7 +81,7 @@ class NoteBookController extends Controller
      */
     public function update(Request $request, NoteBook $notebook)
     {
-        $v = Validator::make($request->all(), ['title' => 'required']);
+        $v = validator($request->all(), ['title' => 'required']);
 
         if($v->fails()) return response()->json($v->errors()->all(), 422);
 
@@ -93,6 +91,29 @@ class NoteBookController extends Controller
         ]);
 
         return response()->json(true, 200);
+    }
+
+    /**
+     * Notebook Image Upload
+     *
+     * @param Request $request
+     * @return string $url
+     */
+    public function upload(Request $request)
+    {
+        $v = validator($request->all(), ['upload' => 'required']);
+
+        if($v->fails()) {
+            return response()->json([
+                'error' => ['message' => $v->errors()->first()]
+            ]);
+        }
+
+        $url = $request->upload->store('uploads', 'public');
+
+        $url = asset("storage/$url");
+
+        return response()->json(compact("url"), 200);
     }
 
     /**

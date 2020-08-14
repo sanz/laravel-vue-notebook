@@ -60,7 +60,8 @@
 </template>
 
 <script>
-import InlineEditor from "@ckeditor/ckeditor5-build-inline";
+
+require('../ckeditor5/build/ckeditor');
 
 export default {
     props: ["note"],
@@ -68,11 +69,32 @@ export default {
         return {
             titleEdit: false,
             contentEdit: false,
-            contentEditor: null,
-            newTitle: null,
+            contentEditor: '',
+            newTitle: '',
             editorOptions: {
+                placeholder: 'Start Writing Content...',
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'link', '|', 'bulletedList', 'numberedList', 
+                    '|', 'blockQuote', 'imageUpload', 'insertTable', 'mediaEmbed'
+                ],
+                table: {
+                    contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+                },
+                image: {
+                    toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+                    styles: ['full', 'alignLeft', 'alignRight']
+                },
                 mediaEmbed: { 
                     previewsInData: true 
+                },
+                simpleUpload: {
+                    // The URL that the images are uploaded to.
+                    uploadUrl: '/upload',
+
+                    // Headers sent along with the XMLHttpRequest to the upload server.
+                    headers: {
+                        'X-CSRF-TOKEN': window.csrf
+                    }
                 }
             }
         };

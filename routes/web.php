@@ -21,3 +21,5 @@ Route::view('/', 'welcome');
 Route::resource('notebook', 'NotebookController');
 
 Route::resource('note', 'NoteController')->only(['store', 'update', 'destroy']);
+
+Route::post('upload', 'NoteBookController@upload');
