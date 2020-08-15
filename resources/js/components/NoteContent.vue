@@ -61,7 +61,7 @@
 
 <script>
 
-require("../ckeditor5-build-inline/build/ckeditor");
+require("../ckeditor5-build-balloon-block/build/ckeditor");
 
 export default {
     props: ["note"],
@@ -69,8 +69,8 @@ export default {
         return {
             titleEdit: false,
             contentEdit: false,
-            contentEditor: '',
-            newTitle: '',
+            contentEditor: null,
+            newTitle: null,
             editorOptions: {
                 placeholder: 'Start Writing Content...',
                 // toolbar: [
@@ -119,12 +119,15 @@ export default {
             if (!this.contentEditor) {
                 this.contentEdit = true;
 
-                InlineEditor.create(document.querySelector("#editor"), this.editorOptions)
+                BalloonEditor.create(document.querySelector("#editor"), this.editorOptions)
                     .then(editor => {
                         this.contentEditor = editor;
                     })
                     .catch(error => {
                         console.error(error);
+                    })
+                    .finally(() => {
+                        this.contentEditor.editing.view.focus();
                     });
             }
         },
@@ -170,7 +173,7 @@ export default {
             axios
                 .patch(`/note/${this.note.id}`, { content: contentData })
                 .then(response => {
-                    this.note.content = contentData;
+                    if(contentData) this.note.content = contentData;
                 })
                 .catch(error => {
                     console.log(error);
